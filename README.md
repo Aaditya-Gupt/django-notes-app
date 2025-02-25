@@ -1,30 +1,35 @@
-# Simple Notes App for TWS Community
-This is a simple notes app built with React and Django.
+# Django Notes App
 
-## Requirements
-1. Python 3.9
-2. Node.js
-3. React
+A 3-tier notes application with a Django backend, Nginx proxy, and MySQL database, all containerized using Docker.
 
-## Installation
-1. Clone the repository
-```
-git clone https://github.com/LondheShubham153/django-notes-app.git
-```
+## What It Does
+This app lets you create, view, and manage notes. It features:
+- A Django REST API (`api/`) for backend logic.
+- A React frontend (`mynotes/`) for a slick user interface.
+- MySQL (`db`) for persistent storage.
 
-2. Build the app
-```
-docker build -t notes-app .
-```
+## My Contribution
+I took an existing notes app and Dockerized it:
+- Built a `Dockerfile` for the Django backend.
+- Created a `docker-compose.yml` to orchestrate Django, Nginx, and MySQL.
+- Configured Nginx (`nginx/default.conf`) as a reverse proxy to serve the app.
+- Networked the services for seamless communication.
 
-3. Run the app
-```
-docker run -d -p 8000:8000 notes-app:latest
-```
-
-## Nginx
-
-Install Nginx reverse proxy to make this application available
-
-`sudo apt-get update`
-`sudo apt install nginx`
+## How to Run
+1. **Clone the repo**: Download the project from GitHub to your local machine.
+   \`\`\`
+   git clone https://github.com/Aaditya-Gupt/django-notes-app.git
+   cd django-notes-app
+   \`\`\`
+2. **Set up environment variables**: Create a \`.env\` file with necessary settings (e.g., database credentials). Example:
+   \`\`\`
+   MYSQL_ROOT_PASSWORD=your_password_here
+   \`\`\`
+   Check \`.env.example\` (if provided) for required variables.
+3. **Build and run**: Spin up the Docker containers.
+   \`\`\`
+   docker compose up --build
+   \`\`\`
+4. **Access the app**:
+   - Frontend: Open \`http://localhost\` in your browser (served via Nginx).
+   - API: Hit \`http://localhost:8000\` for the Django backend directly.
